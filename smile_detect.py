@@ -6,9 +6,9 @@ import cv2
 ball_cascade = cv2.CascadeClassifier('smile.xml')
 
 camera = PiCamera()
-camera.resolution = (480,320)
-camera.framerate = 120
-rawCapture = PiRGBArray(camera, size=(480, 320))
+camera.resolution = (200,200)
+camera.framerate = 60
+rawCapture = PiRGBArray(camera, size=(200, 200))
 
 time.sleep(0.1)
 
