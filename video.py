@@ -32,7 +32,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         # max_x = max(eye1[0], eye2[0])
         # min_y = min(eye1[0], eye2[0])
         # max_y = max(eye1[0], eye2[0])
-        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+        cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,0),2)
         # cv2.rectangle(roi_color,(min_x,min_y+30),(max_x+avgw, max_y-30),(0,255,0),2)
 
     cv2.imshow("Frame", image)
