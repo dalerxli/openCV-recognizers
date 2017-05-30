@@ -16,10 +16,12 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     image = frame.array
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    balls = ball_cascade.detectMultiScale(gray, 1.3, 5)
+    small = cv2.resize(gray, (0,0), fx=0.5, fy=0.5)
+
+    balls = ball_cascade.detectMultiScale(small, 1.3, 5)
 
     for (x,y,w,h) in balls:
-        roi_gray = gray[y:y+h, x:x+w]
+        roi_gray = small[y:y+h, x:x+w]
         roi_color = image[y:y+h, x:x+w]
         # eyes = eye_cascade.detectMultiScale(roi_gray)
         # eye1 = eyes[0]
