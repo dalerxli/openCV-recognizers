@@ -21,7 +21,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     for (x,y,w,h) in faces:
         roi_gray = gray[y:y+h, x:x+w]
-        roi_color = img.array[y:y+h, x:x+w]
+        roi_color = image[y:y+h, x:x+w]
         eyes = eye_cascade.detectMultiScale(roi_gray)
         eye1 = eyes[0]
         eye2 = eyes[1]
