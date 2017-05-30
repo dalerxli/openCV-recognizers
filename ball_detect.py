@@ -3,13 +3,12 @@ from picamera import PiCamera
 import time
 import cv2
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade_eye_tree_eyeglasses.xml')
+ball_cascade = cv2.CascadeClassifier('ball.xml')
 
 camera = PiCamera()
-camera.resolution = (640,480)
-camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(640, 480))
+camera.resolution = (320,240)
+camera.framerate = 10
+rawCapture = PiRGBArray(camera, size=(320, 240))
 
 time.sleep(0.1)
 
@@ -17,9 +16,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     image = frame.array
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    ball = ball_cascade.detectMultiScale(gray, 1.3, 5)
 
-    for (x,y,w,h) in faces:
+    for (x,y,w,h) in balls:
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = image[y:y+h, x:x+w]
         # eyes = eye_cascade.detectMultiScale(roi_gray)
