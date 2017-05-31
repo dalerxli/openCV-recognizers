@@ -11,6 +11,7 @@ class FramesCounter:
 
     def start(self):
         self._start = datetime.datetime.now()
+        return self
 
     def stop(self):
         self._end = datetime.datetime.now()
@@ -18,7 +19,7 @@ class FramesCounter:
 
     def update(self):
         self._numFrames+=1
-        
+
 ball_cascade = cv2.CascadeClassifier('ball.xml')
 
 camera = PiCamera()
