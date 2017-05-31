@@ -15,7 +15,7 @@ class FramesCounter:
 
     def stop(self):
         self._end = datetime.datetime.now()
-        print numFrames/((end-start).total_seconds())
+        print self._numFrames/((self._end-self._start).total_seconds())
 
     def update(self):
         self._numFrames+=1
