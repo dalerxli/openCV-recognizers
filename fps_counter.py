@@ -3,6 +3,22 @@ from picamera import PiCamera
 import time, datetime
 import cv2
 
+class FramesCounter:
+    def __init__(self):
+        self._start = None
+        self._end = None
+        self._numFrames = 0
+
+    def start(self):
+        self._start = datetime.datetime.now()
+
+    def stop(self):
+        self._end = datetime.datetime.now()
+        print numFrames/((end-start).total_seconds())
+
+    def update(self):
+        self._numFrames+=1
+        
 ball_cascade = cv2.CascadeClassifier('ball.xml')
 
 camera = PiCamera()
@@ -32,19 +48,3 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     if key == ord("q"):
         counter.stop()
         break
-
-class FramesCounter:
-    def __init__(self):
-        self._start = None
-        self._end = None
-        self._numFrames = 0
-
-    def start(self):
-        self._start = datetime.datetime.now()
-
-    def stop(self):
-        self._end = datetime.datetime.now()
-        print numFrames/((end-start).total_seconds())
-
-    def update(self):
-        self._numFrames+=1
