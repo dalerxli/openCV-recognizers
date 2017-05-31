@@ -6,9 +6,9 @@ import cv2
 ball_cascade = cv2.CascadeClassifier('ball.xml')
 
 camera = PiCamera()
-camera.resolution = (180,240)
+camera.resolution = (600,400)
 camera.framerate = 120
-rawCapture = PiRGBArray(camera, size=(180, 240))
+rawCapture = PiRGBArray(camera, size=(600, 400))
 
 time.sleep(0.1)
 
@@ -16,7 +16,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     image = frame.array
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    balls = ball_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=1, minSize=(10,0))
+    balls = ball_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(10,0))
 
     for (x,y,w,h) in balls:
         roi_gray = gray[y:y+h, x:x+w]
